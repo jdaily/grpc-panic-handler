@@ -10,7 +10,7 @@ var _ grpc.UnaryServerInterceptor = UnaryPanicHandler
 var _ grpc.StreamServerInterceptor = StreamPanicHandler
 
 func toPanicError(r interface{}) error {
-	return grpc.Errorf(codes.Internal, "panic: %v", r)
+	return grpc.Errorf(codes.Internal, "panic: %v+", r)
 }
 
 func UnaryPanicHandler(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
